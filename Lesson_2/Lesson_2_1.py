@@ -27,4 +27,3 @@ while True:
             print(f'Ответ: {x / z}')
     elif n != '+' or '-' or '*' or '/' or '0':
         print('Ошибка знака!')
-
