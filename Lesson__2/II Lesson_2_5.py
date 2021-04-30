@@ -3,8 +3,9 @@
 найти наибольшее по сумме цифр.
 Вывести на экран это число и сумму его цифр.
 '''
+# https://drive.google.com/file/d/1d-A2fhc8saMYFs1HXnhnEAFCOtuPeeMg/view?usp=sharing
 quant = int(input('Введите количество цифр: '))
-attempt, max_summ, num_max_sum, summ = 0, 0, 0, 0
+attempt, max_summ, num_max_sum = 0, 0, 0
 while attempt < quant:
     number = input('Введите натуральное число: ')
     summ = sum(map(int, list(number)))
