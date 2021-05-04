@@ -25,6 +25,6 @@ array_1_1 = [random.randint(beginning, end) for _ in range(size)]
 print(f'Сгенерированный массив: {array_1_1}')
 array_2_2 = []
 for i in array_1_1:
-    if i % 2 ==0:
+    if i % 2 == 0:
         array_2_2.append(array_1_1.index(i))
 print(f'Индексы четных чисел в сгенерированном массиве: {array_2_2}')
