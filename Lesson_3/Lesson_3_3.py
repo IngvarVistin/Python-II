@@ -9,12 +9,12 @@ beginning = -50
 end = 100
 array = [random.randint(beginning, end) for _ in range(size)]
 print(f'Сгенерированный массив: {array}')
-min_i, pos_i = 0, 0
-for i in array:
-    if min_i > i:
-        min_i = i
-        pos_i = array.index(i)
-if min_i >= 0:
+min_i, pos_i = 0, 0     # Задаём счётчики минимального элемента и позиции элемента
+for i in array:         # Для всех элементов в массиве:
+    if min_i > i:       # Если значение элемента в массиве меньше, чем в счётчике, то
+        min_i = i       # приравниваем значение к счётчику
+        pos_i = array.index(i)      # и записываем в счётчик позицию элемента
+if min_i >= 0:          # Если в массиве нет отрицательных чисел, то выводится print
     print('В массиве нет отрицацельных чисел!')
 else:
     print(f'Минимальный отрицательный элемент в массиве: {min_i}\n'
