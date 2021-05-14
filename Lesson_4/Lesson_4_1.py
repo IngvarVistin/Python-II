@@ -8,9 +8,9 @@ import random
 import cProfile
 import timeit
 
-def mass(size, beginning, end):
+def mass_1(size, beginning, end):
     array = [random.randint(beginning, end) for _ in range(size)]
-    print(f'Сгенерированный массив: {array}')
+#    print(f'Сгенерированный массив: {array}')
     min_i, pos_i = 0, 0
     for i in array:
         if min_i > i:
@@ -21,7 +21,7 @@ def mass(size, beginning, end):
     else:
         return f'Минимальный отрицательный элемент в массиве: {min_i}\nПозиция в массиве: {pos_i}'
 
-cProfile.run('mass(10_000, -10_000, 10_000)')
+cProfile.run('mass_1(10_000, -10_000, 10_000)')
 '''
    ncalls  tottime  percall  cumtime  percall filename:lineno(function)
         1    0.000    0.000    0.019    0.019 <string>:1(<module>)
@@ -36,18 +36,19 @@ cProfile.run('mass(10_000, -10_000, 10_000)')
     16327    0.001    0.000    0.001    0.000 {method 'getrandbits' of '_random.Random' objects}
 '''
 
-print(timeit.timeit('mass(10_000, -10_000, 10_000)', number=1, globals=globals()))   # 0.009412400000000001
-print(timeit.timeit('mass(10_000, -10_000, 10_000)', number=100, globals=globals()))   # 1.2513216
+print(timeit.timeit('mass_1(10_000, -10_000, 10_000)', number=1, globals=globals()))        # 0.008897000000000002
+print(timeit.timeit('mass_1(10_000, -10_000, 10_000)', number=100, globals=globals()))      # 0.870988
+print(timeit.timeit('mass_1(10_000, -10_000, 10_000)', number=1000, globals=globals()))     # 8.7144886
 
-def mass(size, beginning, end):
+def mass_2(size, beginning, end):
     array = [random.randint(beginning, end) for _ in range(size)]
-    print(f'Сгенерированный массив: {array}')
+#    print(f'Сгенерированный массив: {array}')
     if min(array) >= 0:
         return 'В массиве нет отрицацельных чисел!'
     else:
         return f'Минимальный отрицательный элемент в массиве: {min(array)}\nПозиция в массиве: {array.index(min(array))}'
 
-cProfile.run('mass(10_000, -10_000, 10_000)')
+cProfile.run('mass_2(10_000, -10_000, 10_000)')
 '''
 ncalls  tottime  percall  cumtime  percall filename:lineno(function)
         1    0.000    0.000    0.024    0.024 <string>:1(<module>)
@@ -64,5 +65,6 @@ ncalls  tottime  percall  cumtime  percall filename:lineno(function)
     16268    0.001    0.000    0.001    0.000 {method 'getrandbits' of '_random.Random' objects}
         1    0.000    0.000    0.000    0.000 {method 'index' of 'list' objects}
 '''
-print(timeit.timeit('mass(10_000, -10_000, 10_000)', number=1, globals=globals()))    # 0.015600799999999998
-print(timeit.timeit('mass(10_000, -10_000, 10_000)', number=100, globals=globals()))    # 1.264565
+print(timeit.timeit('mass_2(10_000, -10_000, 10_000)', number=1, globals=globals()))    # 0.00894109999999948
+print(timeit.timeit('mass_2(10_000, -10_000, 10_000)', number=100, globals=globals()))    # 0.9092558999999998
+print(timeit.timeit('mass_2(10_000, -10_000, 10_000)', number=1000, globals=globals()))     # 8.9917814
